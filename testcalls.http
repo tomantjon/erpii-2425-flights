@@ -1,0 +1,27 @@
+### Get All Flights with connection
+GET http://localhost:4004/odata/v4/flight/Flight?$expand=*
+
+### Get All FlightConnections
+GET http://localhost:4004/odata/v4/flight/FlightConnection?$expand=*
+
+### Get a Flight by ID
+GET http://localhost:4004/odata/v4/flight/Flight(AirlineID='EA',FlightDate='2023-07-31',ConnectionID='0402')
+
+### Create a new Flight
+POST http://localhost:4004/odata/v4/flight/Flight
+Content-Type: application/json
+
+{
+  "AirlineID": "EA",
+  "FlightDate": "2024-10-29",
+  "ConnectionID": "1111",
+  "Price": 100.00,
+  "CurrencyCode_code": "USD",
+  "PlaneType": "A380",
+  "MaximumSeats": 500,
+  "OccupiedSeats": 0
+}
+
+### Get newly created Flight
+GET http://localhost:4004/odata/v4/flight/Flight(AirlineID='EA',FlightDate='2024-10-29',ConnectionID='1111')
+
