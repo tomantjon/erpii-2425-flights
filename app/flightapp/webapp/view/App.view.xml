@@ -1,6 +1,53 @@
 <mvc:View controllerName="sap.capire.app.flightapp.controller.App"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m">
-    <Page id="page" title="{i18n>title}">
-    </Page>
+    <Shell id="shell">
+        <App id="app">
+            <pages>
+                <Page id="page"
+                    title="{i18n>title}">
+                    <Table id="tblFlights"
+                        inset="false"
+                        items="{
+			path: '/Flight',
+			sorter: {
+				path: 'FlightDate'
+			}
+		}">
+
+                        <columns>
+                            <Column width="12em">
+                                <Text text="Flight Date" />
+                            </Column>
+                            <Column width="12em">
+                                <Text text="Airline" />
+                            </Column>
+                            <Column width="12em">
+                                <Text text="Connection" />
+                            </Column>
+                            <Column width="12em">
+                                <Text text="Price" />
+                            </Column>
+                        </columns>
+                        <items>
+                            <ColumnListItem vAlign="Middle">
+                                <cells>
+                                    <Text text="{FlightDate}" />
+                                    <Text text="{to_Airline/Name}" />
+                                    <Text text="{ConnectionID}" />
+
+                                    <ObjectNumber number="{
+							parts:[{path:'Price'},{path:'CurrencyCode_code'}],
+							type: 'sap.ui.model.type.Currency',
+							formatOptions: {showMeasure: false}
+						}"
+                                        unit="{CurrencyCode_code}" />
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+                </Page>
+            </pages>
+        </App>
+    </Shell>
 </mvc:View>
