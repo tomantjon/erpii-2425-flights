@@ -6,6 +6,9 @@
     xmlns:core="sap.ui.core">
     <Page id="page"
         title="{i18n>title}">
+        <Button text="Navigate to detail"
+            type="Default"
+            press="onNavPress"></Button>
         <VBox >
             <f:SimpleForm id="SimpleFormChange354"
                 editable="true"

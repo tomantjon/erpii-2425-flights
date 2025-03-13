@@ -96,8 +96,8 @@
           "target": ["ListTarget"]
         },
         {
-          "name": "Detail",
-          "pattern": "/detail",
+          "name": "DetailRoute",
+          "pattern": "detail?name={name}",
           "target": ["DetailTarget"]
         }
       ],

@@ -25,6 +25,11 @@ sap.ui.define(
         this._createFlightV4(oFlight);
       },
 
+      onNavPress() {
+        let oRouter = this.getOwnerComponent().getRouter();
+        oRouter.navTo("DetailRoute", { name: "passingParam" });
+      },
+
       _createFlightV4: function (oFlight) {
         var oDataListBinding = this.getView()
           .byId("tblFlights")
