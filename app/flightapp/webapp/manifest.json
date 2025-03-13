@@ -91,17 +91,15 @@
       },
       "routes": [
         {
-          "name": "RouteApp",
-          "pattern": ":?query:",
-          "target": [
-            "TargetApp"
-          ]
+          "name": "ListRoute",
+          "pattern": "",
+          "target": ["ListTarget"]
         }
       ],
       "targets": {
-        "TargetApp": {
-          "id": "App",
-          "name": "App"
+        "ListTarget": {
+          "id": "List",
+          "name": "List"
         }
       }
     },
