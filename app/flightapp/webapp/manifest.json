@@ -94,12 +94,21 @@
           "name": "ListRoute",
           "pattern": "",
           "target": ["ListTarget"]
+        },
+        {
+          "name": "Detail",
+          "pattern": "/detail",
+          "target": ["DetailTarget"]
         }
       ],
       "targets": {
         "ListTarget": {
           "id": "List",
           "name": "List"
+        },
+        "DetailTarget": {
+          "id": "Detail",
+          "name": "Detail"
         }
       }
     },
