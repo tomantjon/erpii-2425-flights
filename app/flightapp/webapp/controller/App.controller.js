@@ -1,6 +1,10 @@
 sap.ui.define(
-  ["sap/ui/core/mvc/Controller", "sap/ui/model/json/JSONModel"],
-  (Controller, JSONModel) => {
+  [
+    "sap/ui/core/mvc/Controller",
+    "sap/ui/model/json/JSONModel",
+    "sap/m/MessageToast",
+  ],
+  (Controller, JSONModel, MessageToast) => {
     "use strict";
 
     return Controller.extend("sap.capire.app.flightapp.controller.App", {
@@ -22,13 +26,19 @@ sap.ui.define(
       },
 
       _createFlightV4: function (oFlight) {
-        var oContext = this.getView().byId("tblFlights").getBinding("items");
+        var oDataListBinding = this.getView()
+          .byId("tblFlights")
+          .getBinding("items");
 
-        oContext.create(oFlight);
+        //Return a promise for the create
+        var oContext = oDataListBinding.create(oFlight);
 
+        // Note: This promise fails only if the transient entity is canceled,
+        //   i.e. deleted by either deleting the transient context or by resetting pending changes
         oContext.created().then(
           function () {
             //Flight Successfully created
+            MessageToast.show("Flight added");
           },
           function (oError) {
             //Flight failed
