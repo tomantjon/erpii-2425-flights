@@ -1,0 +1,11 @@
+<mvc:View controllerName="sap.capire.app.flightapp.controller.App"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:core="sap.ui.core">
+    <Shell id="shell">
+        <App id="app">
+        </App>
+    </Shell>
+</mvc:View>
