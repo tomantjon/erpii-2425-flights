@@ -97,7 +97,7 @@
         },
         {
           "name": "DetailRoute",
-          "pattern": "detail?name={name}",
+          "pattern": "detail?path={path}",
           "target": ["DetailTarget"]
         }
       ],

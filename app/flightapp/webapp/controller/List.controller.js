@@ -25,9 +25,12 @@ sap.ui.define(
         this._createFlightV4(oFlight);
       },
 
-      onNavPress() {
+      handleListItemPressed: function (oEvent) {
+        let oContext = oEvent.getSource().getBindingContext();
+        let sItemPath = oContext.getPath().substr(1);
+
         let oRouter = this.getOwnerComponent().getRouter();
-        oRouter.navTo("DetailRoute", { name: "passingParam" });
+        oRouter.navTo("DetailRoute", { path: sItemPath });
       },
 
       _createFlightV4: function (oFlight) {

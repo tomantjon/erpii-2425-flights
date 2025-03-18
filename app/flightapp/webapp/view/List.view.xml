@@ -73,7 +73,9 @@
                 </Column>
             </columns>
             <items>
-                <ColumnListItem vAlign="Middle">
+                <ColumnListItem vAlign="Middle"
+                    type="Navigation"
+                    press="handleListItemPressed">
                     <cells>
                         <Text text="{FlightDate}" />
                         <Text text="{to_Airline/Name}" />

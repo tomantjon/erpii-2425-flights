@@ -12,7 +12,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], (Controller) => {
     _onRouteMatched: function (oEvent) {
       console.log("Route matched");
       let oArgs = oEvent.getParameter("arguments");
-      console.log(oArgs.name);
+      console.log(oArgs.path);
     },
   });
 });
