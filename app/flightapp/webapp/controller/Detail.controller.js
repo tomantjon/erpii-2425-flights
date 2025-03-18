@@ -12,7 +12,10 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], (Controller) => {
     _onRouteMatched: function (oEvent) {
       console.log("Route matched");
       let oArgs = oEvent.getParameter("arguments");
-      console.log(oArgs.path);
+      var urlPath = "/" + oArgs.path;
+
+      //bind the context of the base model to a specific flight, and not to the full entity /Flight
+      this.getView().bindElement(urlPath);
     },
   });
 });
