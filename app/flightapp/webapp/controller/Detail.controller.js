@@ -22,7 +22,13 @@ sap.ui.define(
         var urlPath = "/" + oArgs.path;
 
         //bind the context of the base model to a specific flight, and not to the full entity /Flight
-        this.getView().bindElement(urlPath);
+        this.getView().bindElement({
+          path: urlPath,
+          parameters: {
+            $count: true,
+            $$updateGroupId: "flightGroup",
+          },
+        });
       },
 
       handleEditPress: function () {
@@ -30,10 +36,25 @@ sap.ui.define(
       },
 
       handleSavePress: function () {
+        var fnSuccess = function () {
+          MessageToast.show(this._getText("changesSentMessage"));
+        }.bind(this);
+
+        var fnError = function (oError) {
+          MessageBox.error(oError.message);
+        }.bind(this);
+
+        this.getView()
+          .getModel()
+          .submitBatch("flightGroup")
+          .then(fnSuccess, fnError);
+
         this._toggleButtonsAndView(false);
       },
 
       handleCancelPress: function () {
+        //Restore the data
+        this.getView().getBindingContext().resetChanges();
         this._toggleButtonsAndView(false);
       },
 
