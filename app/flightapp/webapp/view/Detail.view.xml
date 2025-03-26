@@ -9,6 +9,10 @@
         showHeader="true">
         <customHeader>
             <Bar>
+                <contentLeft>
+                    <Button icon="sap-icon://nav-back"
+                        press="onNavBack"></Button>
+                </contentLeft>
                 <contentRight>
                     <Button id="edit"
                         text="Edit"
