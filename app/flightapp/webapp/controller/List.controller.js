@@ -3,8 +3,10 @@ sap.ui.define(
     "sap/ui/core/mvc/Controller",
     "sap/ui/model/json/JSONModel",
     "sap/m/MessageToast",
+    "sap/ui/model/Filter",
+    "sap/ui/model/FilterOperator",
   ],
-  (Controller, JSONModel, MessageToast) => {
+  (Controller, JSONModel, MessageToast, Filter, FilterOperator) => {
     "use strict";
 
     return Controller.extend("sap.capire.app.flightapp.controller.List", {
@@ -17,6 +19,33 @@ sap.ui.define(
 
         let oFormModel = new JSONModel(oNewFlight);
         this.getView().setModel(oFormModel, "form");
+      },
+
+      onSearch: function (oEvent) {
+        // add filter for search
+        var aFilters = [];
+        var sQuery = oEvent.getSource().getValue();
+        if (sQuery && sQuery.length > 0) {
+          //simple filter
+          // var filter = new Filter(
+          //   "to_Airline/Name",
+          //   FilterOperator.Contains,
+          //   sQuery
+          // );
+          //Advanced Filter
+          var filter = new Filter({
+            path: "to_Airline/Name",
+            operator: FilterOperator.Contains,
+            value1: sQuery,
+            caseSensitive: false,
+          });
+          aFilters.push(filter);
+        }
+
+        // update list binding
+        var oList = this.byId("tblFlights");
+        var oBinding = oList.getBinding("items");
+        oBinding.filter(aFilters, "Application");
       },
 
       handleSavePress(evt) {
