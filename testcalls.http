@@ -27,3 +27,14 @@ GET http://localhost:4004/odata/v4/flight/Flight(AirlineID='EA',FlightDate='2024
 
 ### Get newly created Flight
 GET http://localhost:4004/odata/v4/flight/Flight(AirlineID='EA',FlightDate='2023-07-31',ConnectionID='0402')?$expand=*
+
+### Create a new Flight
+POST http://localhost:4004/odata/v4/flight/Facility
+Content-Type: application/json
+
+{
+  "Name": "Extra legroom"
+}
+
+### Create all facilities via odata v2
+GET http://localhost:4004/odata/v2/flight/Facility

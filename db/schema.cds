@@ -53,3 +53,9 @@ entity FlightConnection {
       to_Airline         : Association to Airlines
                              on to_Airline.AirlineID = AirlineID;
 };
+
+entity Facility {
+  key ID          : UUID;
+      Name        : String;
+      Description : String;
+}
