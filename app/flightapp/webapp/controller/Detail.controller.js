@@ -1,14 +1,13 @@
 sap.ui.define(
   [
-    "sap/ui/core/mvc/Controller",
+    "sap/capire/app/flightapp/controller/BaseController",
     "sap/m/MessageToast",
     "sap/m/MessageBox",
-    "sap/ui/core/routing/History",
   ],
-  (Controller, MessageToast, MessageBox, History) => {
+  (BaseController, MessageToast, MessageBox) => {
     "use strict";
 
-    return Controller.extend("sap.capire.app.flightapp.controller.Detail", {
+    return BaseController.extend("sap.capire.app.flightapp.controller.Detail", {
       onInit() {
         this.oRouter = this.getOwnerComponent().getRouter();
         this.oRouter
@@ -19,18 +18,6 @@ sap.ui.define(
         this._formFragments = {};
         // Set the initial form to be the display one
         this._showFormFragment("FlightDetailDisplay");
-      },
-
-      onNavBack: function () {
-        const oHistory = History.getInstance();
-        const sPreviousHash = oHistory.getPreviousHash();
-
-        if (sPreviousHash !== undefined) {
-          window.history.go(-1);
-        } else {
-          const oRouter = this.getOwnerComponent().getRouter();
-          oRouter.navTo("ListRoute", {}, true);
-        }
       },
 
       _onRouteMatched: function (oEvent) {
